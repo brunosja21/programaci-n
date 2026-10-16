@@ -1,0 +1,59 @@
+void main() {
+    Scanner entrada = new Scanner(System.in);
+    int num = 0;
+    int pares = 0;
+    int impares = 0;
+    int positivos = 0;
+    int negativos = 0;
+    int cont = 0;
+    double sumaTotal = 0;
+    int mayor = Integer.MIN_VALUE;
+    int menor = Integer.MAX_VALUE;
+    double promedio = 0;
+    try {
+        do {
+            try {
+                System.out.println("Introduce el numero que usted quiera");
+                System.out.print("Numero: ");
+                num = entrada.nextInt();
+                if (num % 2 == 0) {
+                    pares++;
+                } else {
+                    impares++;
+                }
+                if (num > 0) {
+                    positivos++;
+                } else {
+                    negativos++;
+                }
+                sumaTotal += num;
+                cont++;
+                if (num > mayor) {
+                    mayor = num;
+                }
+                if (num < menor) {
+                    menor = num;
+                }
+                if (num != 0) {
+                    promedio = sumaTotal / cont;
+                } else
+                    System.out.println("No se ingresaron números válidos antes del 0.");
+            } catch (InputMismatchException e) {
+                System.out.println("¡¡¡ERROR: Has introducido un valor que no es un numero");
+                entrada.nextLine();
+            }
+        } while (num != 0);
+        System.out.println("Cantidad de números ingresados: " + cont);
+        System.out.println("Pares: " + pares);
+        System.out.println("Impares: " + impares);
+        System.out.println("Positivos: " + positivos);
+        System.out.println("Negativos: " + negativos);
+        System.out.println("Suma total: " + sumaTotal);
+        System.out.printf("Promedio: %.2f ", promedio);
+        System.out.println("Número mayor: " + mayor);
+        System.out.println("Número menor: " + menor);
+    } catch (InputMismatchException e) {
+        System.out.println("¡¡¡ERROR: Has introducido un valor que no es un numero");
+        entrada.nextLine();
+    }
+}
